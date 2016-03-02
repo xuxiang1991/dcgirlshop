@@ -14,6 +14,7 @@ import com.daocheng.girlshop.myApplication;
 import com.daocheng.girlshop.Interface.RequestWebListener;
 
 import com.daocheng.girlshop.utils.Config;
+import com.umeng.analytics.MobclickAgent;
 
 
 /**
@@ -62,6 +63,9 @@ public abstract class BaseActivity extends FragmentActivity {
         width = dm.widthPixels;
         height = dm.heightPixels;
 
+        MobclickAgent.onPageStart(activityManager.currentActivity().getLocalClassName());
+
+        MobclickAgent.onResume(this);
 
     }
 
@@ -70,7 +74,9 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onPause() {
         super.onPause();
 
+        MobclickAgent.onPageEnd(activityManager.currentActivity().getLocalClassName());
 
+        MobclickAgent.onPause(this);//umeng
     }
 
     @Override

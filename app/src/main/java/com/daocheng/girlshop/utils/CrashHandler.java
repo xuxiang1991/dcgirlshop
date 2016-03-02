@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import com.daocheng.girlshop.myApplication;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -129,6 +130,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
         }.start();
         // 保存日志文件
         saveCatchInfo2File(ex);
+
+        MobclickAgent.reportError(mContext,ex);//上传到友盟错误处理
 //        CookeApplication.getInstance().exitExceptforMain();//报错就返回首页
         myApplication.getInstance().restart();
         return true;

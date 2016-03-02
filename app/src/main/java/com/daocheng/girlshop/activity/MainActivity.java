@@ -21,11 +21,13 @@ import com.daocheng.girlshop.entity.Logo;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.fragment.Frag;
 import com.daocheng.girlshop.fragment.HomeFragment;
+import com.daocheng.girlshop.fragment.MyOwnFragment;
 import com.daocheng.girlshop.myApplication;
 import com.daocheng.girlshop.net.Api;
 import com.daocheng.girlshop.net.DownloadManager;
 import com.daocheng.girlshop.net.NetUtils;
 import com.duowan.mobile.netroid.Listener;
+import com.umeng.analytics.MobclickAgent;
 
 
 /**
@@ -35,13 +37,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     private Fragment homeFragment;
-
+    private MyOwnFragment myownFragment;
 
 
     private ViewPager mPager;
     private RadioGroup mGroup;
 
     private BroadcastReceiver indexofcast;
+
 
 
     @Override
@@ -188,6 +191,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 if(homeFragment==null)
                     homeFragment=new HomeFragment();
                 return homeFragment;
+            }else if(position == 3){
+                if(myownFragment == null)
+                    myownFragment = new MyOwnFragment();
+                return myownFragment;
             } else {
                 Frag frag = new Frag();
                 Bundle bundle = new Bundle();
@@ -233,7 +240,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         MessageDialog dialog = new MessageDialog(self,"提示","是否要退出神厨家宴",MessageDialog.HOME, new MessageDialog.onRequest() {
             @Override
             public void back() {
-
+                MobclickAgent.onKillProcess(self);
                System.exit(0);
             }
         });

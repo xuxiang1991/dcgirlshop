@@ -63,10 +63,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
+        <!--umengApp 56d56cb967e58e3d7a001308-->
+        <!--2B:56:09:B8:7E:F3:61:D4:C3:8A:5F:D4:86:78:C1:CB:CE:38:8C:24-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="TfXHmPemhgXacdeXSZ836SA9" />
 
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="56d56cb967e58e3d7a001308"></meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="suzhou" />
 
         <activity
             android:name=".activity.SplashActivity"
